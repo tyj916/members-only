@@ -1,4 +1,5 @@
 const { body, validationResult} = require('express-validator');
+const bcrypt = require('bcryptjs');
 const db = require('../db/queries');
 
 const alphaErr = 'must only contain letters.';
@@ -39,6 +40,13 @@ const createUserPost = [
     }
 
     const { firstName, lastName, username, password } = req.body;
+    bcrypt.hash(password, 10, async (err, hashedPassword) => {
+      if (err) {
+        throw new Error('Password encrypt error');
+      }
+
+      await db.createUser(firstName, lastName, username, hashedPassword);
+    });
     res.redirect('sign-up');
   }
 ]
