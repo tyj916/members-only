@@ -1,4 +1,5 @@
 const { body, validationResult} = require('express-validator');
+const db = require('../db/queries');
 
 const alphaErr = 'must only contain letters.';
 const nameLengthErr = 'must be between 1 and 20 characters.';
