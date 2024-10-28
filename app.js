@@ -2,10 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
+const pgPool = require('./db/pool');
 const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
 const postsRouter = require('./routes/postsRouter');
-const pgPool = require('./db/pool');
 
 const app = express();
 app.set('view engine', 'ejs');
