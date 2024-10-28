@@ -22,7 +22,12 @@ async function logInPost(req, res, next) {
 }
 
 async function logOut(req, res) {
-  res.send('logout');
+  req.logout(err => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
 }
 
 module.exports = {
