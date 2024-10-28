@@ -5,13 +5,18 @@ const passport = require('passport');
 const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
 const postsRouter = require('./routes/postsRouter');
+const pgPool = require('./db/pool');
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(session({ 
+  store: new (require('connect-pg-simple')(session))({
+    pool: pgPool,
+    tableName: 'users_session',
+  }),
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: false,  
 }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
