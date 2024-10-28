@@ -1,9 +1,4 @@
-require('dotenv').config();
-const { Pool } = require('pg');
-
-const pool = new Pool({
-  connectionString: process.env.DB_STRING,
-});
+const pool = require('./pool');
 
 async function createUser(firstName, lastName, username, password) {
   await pool.query(`
