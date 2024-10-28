@@ -12,6 +12,14 @@ async function createUser(firstName, lastName, username, password) {
   `, [firstName, lastName, username, password]);
 }
 
+async function getUserById(userId) {
+  const { rows } = await pool.query(`
+    SELECT * FROM users
+    WHERE id = $1
+  `, [userId]);
+  return rows[0];
+}
+
 async function getUserByUsername(username) {
   const { rows } = await pool.query(`
     SELECT * FROM users
@@ -22,5 +30,6 @@ async function getUserByUsername(username) {
 
 module.exports = {
   createUser,
+  getUserById,
   getUserByUsername,
 }
