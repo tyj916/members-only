@@ -54,8 +54,17 @@ async function handleSignUp(req, res) {
 }
 
 async function renderUserDetails(req, res) {
+  const user = await db.getUserByUsername(req.params.username);
+
+  if (!user) {
+    res.status(404).render('util/errorPage', {
+      status: 404,
+      message: 'User not found',
+    });
+  }
+
   res.render('user/userDetails', {
-    username: req.params.username,
+    user: user,
   });
 }
 

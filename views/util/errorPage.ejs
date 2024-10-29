@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= user.username %></title>
+  <title>Error <%= status %></title>
 </head>
 <body>
-  <h1><%= user.username %></h1>
-  <h2><%= user.first_name + ' ' + user.last_name %></h2>
-  <h2><%= user.membership_status %></h2>
+  <h1><%= status %></h1>
+  <h2><%= message %></h2>
 </body>
 </html>
