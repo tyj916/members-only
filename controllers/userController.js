@@ -72,10 +72,35 @@ function renderJoinMembership(req, res) {
   res.render('user/joinMembership');
 }
 
+const validateMemberPasscode = [
+  body('passcode').trim()
+    .isAlphanumeric().withMessage('Passcode must be letters and numbers only.')
+    .custom((value) => {
+      // Passcodes should be saved at database. Put here for simplicity.
+      const passcodes = ['memberPasscode', 'adminPasscode'];
+      return passcodes.includes(value);
+    }).withMessage('Invalid passcode. Please try again.'),
+];
+
+async function handleJoinMembership(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('user/joinMembership', {
+      errors: errors.array(),
+    });
+  }
+
+  const memberType = req.body.passcode === 'adminPasscode' ? 'Admin' : 'Club Member';
+  console.log(memberType);
+  res.redirect(`/u/${req.user.username}`);
+}
+
 module.exports = {
   renderSignUp,
   validateSignUp,
   handleSignUp,
   renderUserDetails,
   renderJoinMembership,
+  validateMemberPasscode,
+  handleJoinMembership,
 }

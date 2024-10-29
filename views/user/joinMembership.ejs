@@ -6,6 +6,12 @@
   <title>Membership</title>
 </head>
 <body>
-  <h1>Membership</h1>
+  <h1>Are you a member?</h1>
+  <h2>Enter the secret passcode to join us:</h2>
+  <%- include('../partials/errorMessages.ejs') %>
+  <form action="/join-member" method="POST">
+    <input type="text" name="passcode" required>
+    <button type="submit">Submit</button>
+  </form>
 </body>
 </html>
