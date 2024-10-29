@@ -5,7 +5,7 @@ const db = require('../db/queries');
 const alphaErr = 'must only contain letters.';
 const nameLengthErr = 'must be between 1 and 20 characters.';
 
-async function renderSignUp(req, res) {
+function renderSignUp(req, res) {
   res.render('user/signUp');
 }
 
@@ -59,7 +59,7 @@ async function renderUserDetails(req, res) {
   });
 }
 
-async function renderJoinMembership(req, res) {
+function renderJoinMembership(req, res) {
   res.render('user/joinMembership');
 }
 
