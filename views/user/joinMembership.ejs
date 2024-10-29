@@ -8,12 +8,18 @@
 <body>
   <h1>Are you a member?</h1>
   <% if (locals.user) { %>
-    <h2>Enter the secret passcode to join us:</h2>
-    <%- include('../partials/errorMessages.ejs') %>
-    <form action="/join-member" method="POST">
-      <input type="text" name="passcode" required>
-      <button type="submit">Submit</button>
-    </form>
+    <% if (user.membership_status === 'Club Member') { %>
+      <h2>You are currently a member of the club!</h2>
+      <p>Check the membership status <a href="/u/<%= user.username %>">at your profile</a></p>
+      <a href="/">Back to home</a>
+    <% } else { %>
+      <h2>Enter the secret passcode to join us:</h2>
+      <%- include('../partials/errorMessages.ejs') %>
+      <form action="/join-member" method="POST">
+        <input type="text" name="passcode" required>
+        <button type="submit">Submit</button>
+      </form>
+    <% } %>
   <% } else { %>
     <h2>Log in and join us:</h2>
     <%- include('../partials/logInForm.ejs') %>

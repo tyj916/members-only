@@ -23,8 +23,17 @@ async function getUserByUsername(username) {
   return rows[0];
 }
 
+async function setMembership(username, membership) {
+  await pool.query(`
+    UPDATE users
+    SET membership_status = $2
+    WHERE username = $1
+  `, [username, membership]);
+}
+
 module.exports = {
   createUser,
   getUserById,
   getUserByUsername,
+  setMembership,
 }

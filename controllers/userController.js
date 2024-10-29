@@ -94,8 +94,8 @@ async function handleJoinMembership(req, res) {
   }
 
   const memberType = req.body.passcode === 'adminPasscode' ? 'Admin' : 'Club Member';
-  console.log(memberType);
-  res.redirect(`/u/${req.user.username}`);
+  await db.setMembership(req.user.username, memberType);
+  res.redirect('/join-member');
 }
 
 module.exports = {
