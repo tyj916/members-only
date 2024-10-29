@@ -5,7 +5,7 @@ const db = require('../db/queries');
 const alphaErr = 'must only contain letters.';
 const nameLengthErr = 'must be between 1 and 20 characters.';
 
-async function createUserGet(req, res) {
+async function renderSignUp(req, res) {
   res.render('user/signUp');
 }
 
@@ -34,7 +34,7 @@ const validateSignUp = [
     }).withMessage('Password do not match'),
 ];
 
-async function createUserPost(req, res) {
+async function handleSignUp(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render('user/signUp', {
@@ -53,20 +53,20 @@ async function createUserPost(req, res) {
   res.redirect('sign-up');
 }
 
-async function getUserDetails(req, res) {
+async function renderUserDetails(req, res) {
   res.render('user/userDetails', {
     username: req.params.username,
   });
 }
 
-async function joinMembershipGet(req, res) {
+async function renderJoinMembership(req, res) {
   res.render('user/joinMembership');
 }
 
 module.exports = {
-  createUserGet,
+  renderSignUp,
   validateSignUp,
-  createUserPost,
-  getUserDetails,
-  joinMembershipGet,
+  handleSignUp,
+  renderUserDetails,
+  renderJoinMembership,
 }

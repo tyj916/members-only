@@ -1,6 +1,6 @@
 const { body, validationResult } = require('express-validator');
 
-async function logInGet(req, res) {
+async function renderLogIn(req, res) {
   res.render('user/logIn');
 }
 
@@ -11,7 +11,7 @@ const validateLogIn = [
     .isLength({ min: 6 }).withMessage(`Password must be at least 6 characters`),
 ];
 
-async function logInPost(req, res, next) {
+async function handleLogIn(req, res, next) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).render('user/logIn', {
@@ -21,7 +21,7 @@ async function logInPost(req, res, next) {
   next();
 }
 
-async function logOut(req, res) {
+async function handleLogOut(req, res) {
   req.logout(err => {
     if (err) {
       return next(err);
@@ -31,8 +31,8 @@ async function logOut(req, res) {
 }
 
 module.exports = {
-  logInGet,
+  renderLogIn,
   validateLogIn,
-  logInPost,
-  logOut,
+  handleLogIn,
+  handleLogOut,
 }

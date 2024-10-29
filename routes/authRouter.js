@@ -36,11 +36,11 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-authRouter.get('/log-in', authController.logInGet);
-authRouter.post('/log-in', authController.validateLogIn, authController.logInPost, passport.authenticate('local', {
+authRouter.get('/log-in', authController.renderLogIn);
+authRouter.post('/log-in', authController.validateLogIn, authController.handleLogIn, passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/log-in',
 }));
-authRouter.get('/log-out', authController.logOut);
+authRouter.get('/log-out', authController.handleLogOut);
 
 module.exports = authRouter;
