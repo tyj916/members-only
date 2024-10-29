@@ -7,11 +7,6 @@
 </head>
 <body>
   <h1>Connect to the club.</h1>
-  <form action="log-in" method="POST">
-    <%- include('../partials/errorMessages.ejs') %>
-    <input type="text" name="username" placeholder="username" required>
-    <input type="password" name="password" placeholder="password" required>
-    <button type="submit">Log In</button>
-  </form>
+  <%- include('../partials/logInForm.ejs'); %>
 </body>
 </html>

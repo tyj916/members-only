@@ -1,0 +1,7 @@
+<form action="log-in" method="POST">
+  <%- include('./errorMessages.ejs') %>
+  <input type="text" name="username" placeholder="username" required>
+  <input type="password" name="password" placeholder="password" required>
+  <button type="submit">Log In</button>
+</form>
+Don't have an account? <a href="/sign-up">Sign Up</a>
