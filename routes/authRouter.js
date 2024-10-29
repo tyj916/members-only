@@ -37,10 +37,15 @@ passport.deserializeUser(async (id, done) => {
 });
 
 authRouter.get('/log-in', authController.renderLogIn);
-authRouter.post('/log-in', authController.validateLogIn, authController.handleLogIn, passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/log-in',
-}));
+authRouter.post(
+  '/log-in', 
+  authController.validateLogIn, 
+  authController.handleLogIn, 
+  passport.authenticate('local', {
+    failureRedirect: '/log-in',
+  }),
+  authController.redirectLogIn,
+);
 authRouter.get('/log-out', authController.handleLogOut);
 
 module.exports = authRouter;

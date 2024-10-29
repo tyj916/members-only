@@ -30,9 +30,19 @@ function handleLogOut(req, res) {
   });
 }
 
+function redirectLogIn(req, res) {
+  if (req.get('Referrer') && !req.get('Referrer').endsWith('log-in')) {
+    res.location(req.get('Referrer'));
+  } else {
+    res.location('/');
+  }
+  res.redirect(res.get('location'));
+}
+
 module.exports = {
   renderLogIn,
   validateLogIn,
   handleLogIn,
   handleLogOut,
+  redirectLogIn,
 }
