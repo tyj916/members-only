@@ -69,7 +69,9 @@ async function renderUserDetails(req, res) {
 }
 
 function renderJoinMembership(req, res) {
-  res.render('user/joinMembership');
+  res.render('user/joinMembership', {
+    user: req.user,
+  });
 }
 
 const validateMemberPasscode = [
