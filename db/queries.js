@@ -40,10 +40,20 @@ async function insertPost(title, content, userId) {
   return rows[0].id;
 }
 
+async function getPostDetails(postId) {
+  const { rows } = await pool.query(`
+    SELECT * FROM users LEFT JOIN posts 
+    ON users.id = posts.user_id
+    WHERE posts.id = $1
+  `, [postId]);
+  return rows[0];
+}
+
 module.exports = {
   createUser,
   getUserById,
   getUserByUsername,
   setMembership,
   insertPost,
+  getPostDetails,
 }
