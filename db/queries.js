@@ -31,9 +31,19 @@ async function setMembership(username, membership) {
   `, [username, membership]);
 }
 
+async function insertPost(title, content, userId) {
+  const { rows } = await pool.query(`
+    INSERT INTO posts (title, timestamp, text, user_id)
+    VALUES ($1, CURRENT_TIMESTAMP(0), $2, $3)
+    RETURNING id
+  `, [title, content, userId]);
+  return rows[0].id;
+}
+
 module.exports = {
   createUser,
   getUserById,
   getUserByUsername,
   setMembership,
+  insertPost,
 }
