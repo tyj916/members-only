@@ -14,7 +14,7 @@ const SQL = `
   CREATE TABLE IF NOT EXISTS posts (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     title VARCHAR (255),
-    timestamp TIMESTAMP,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP(0),
     text TEXT,
     user_id INTEGER,
     FOREIGN KEY (user_id) REFERENCES users(id)
