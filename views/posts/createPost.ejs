@@ -7,7 +7,7 @@
 </head>
 <body>
   <h1>New Post</h1>
-  <%= user.username %>
+  <h2><%= user.username %></h2>
   <form action="/create-post" method="POST">
     <input type="text" name="title" placeholder="Title" required>
     <textarea name="content" id="content" placeholder="Text..."></textarea>
