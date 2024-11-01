@@ -50,7 +50,7 @@ async function handleSignUp(req, res) {
 
     await db.createUser(firstName, lastName, username, hashedPassword);
   });
-  res.redirect('sign-up');
+  res.redirect(`/u/${username}`);
 }
 
 async function renderUserDetails(req, res) {
