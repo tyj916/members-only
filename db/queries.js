@@ -49,6 +49,15 @@ async function getPostDetails(postId) {
   return rows[0];
 }
 
+async function getAllPosts() {
+  const { rows } = await pool.query(`
+    SELECT * FROM users LEFT JOIN posts 
+    ON users.id = posts.user_id  
+  `);
+
+  return rows;
+}
+
 module.exports = {
   createUser,
   getUserById,
@@ -56,4 +65,5 @@ module.exports = {
   setMembership,
   insertPost,
   getPostDetails,
+  getAllPosts,
 }

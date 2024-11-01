@@ -12,5 +12,9 @@
   <% } else { %>
     <a href="/log-in">Log In</a>
   <% } %>
+  
+  <% posts.forEach(post => { %>
+    <%- include('./partials/postDetails', {post: post}) %>
+  <% }); %>
 </body>
 </html>

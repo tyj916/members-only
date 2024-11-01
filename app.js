@@ -6,6 +6,7 @@ const pgPool = require('./db/pool');
 const authRouter = require('./routes/authRouter');
 const userRouter = require('./routes/userRouter');
 const postsRouter = require('./routes/postsRouter');
+const db = require('./db/queries');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -22,9 +23,11 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(authRouter);
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  const allPosts = await db.getAllPosts();
   res.render('index', {
     user: req.user,
+    posts: allPosts,
   });
 });
 app.use(userRouter);
