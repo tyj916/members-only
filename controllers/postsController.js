@@ -36,9 +36,23 @@ async function renderSinglePostPage(req, res) {
   });
 }
 
+async function deletePost(req, res) {
+  const { postId } = req.params;
+  await db.deletePost(postId);
+
+  // redirect to last location if available
+  if (req.get('Referrer') && !req.get('Referrer').endsWith(`/p/${postId}`)) {
+    res.location(req.get('Referrer'));
+  } else {
+    res.location('/');
+  }
+  res.redirect(res.get('location'));
+}
+
 module.exports = {
   renderCreatePost,
   validatePost,
   handleCreatePost,
   renderSinglePostPage,
+  deletePost,
 }

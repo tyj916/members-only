@@ -90,13 +90,14 @@ function processPostsDetails(posts) {
   const processedPosts = [];
 
   posts.forEach(post => {
-    const { title, timestamp, text, username } = post;
+    const { id, title, timestamp, text, username } = post;
     const processedTimestamp = processTimestamp(timestamp);
     processedPosts.push({ 
+      id,
       title, 
       timestamp: processedTimestamp, 
       text, 
-      username 
+      username,
     });
   });
   
@@ -122,6 +123,12 @@ async function getAllPosts() {
   return processedPost;
 }
 
+async function deletePost(postId) {
+  await pool.query(`
+    DELETE FROM posts WHERE id = $1
+  `, [postId]);
+}
+
 module.exports = {
   createUser,
   getUserById,
@@ -131,4 +138,5 @@ module.exports = {
   insertPost,
   getPostDetails,
   getAllPosts,
+  deletePost,
 }
