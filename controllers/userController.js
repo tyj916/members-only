@@ -93,8 +93,13 @@ async function handleJoinMembership(req, res) {
     });
   }
 
-  const memberType = req.body.passcode === 'adminPasscode' ? 'Admin' : 'Club Member';
+  const memberType = req.body.passcode === 'adminPasscode' ? 'Administrator' : 'Club Member';
   await db.setMembership(req.user.username, memberType);
+
+  if (req.body.passcode === 'adminPasscode') {
+    await db.setAdmin(req.user.username);
+  }
+
   res.redirect('/join-member');
 }
 

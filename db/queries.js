@@ -31,6 +31,14 @@ async function setMembership(username, membership) {
   `, [username, membership]);
 }
 
+async function setAdmin(username) {
+  await pool.query(`
+    UPDATE users
+    SET is_admin = TRUE
+    WHERE username = $1
+  `, [username]);
+}
+
 async function insertPost(title, content, userId) {
   const { rows } = await pool.query(`
     INSERT INTO posts (title, timestamp, text, user_id)
@@ -119,6 +127,7 @@ module.exports = {
   getUserById,
   getUserByUsername,
   setMembership,
+  setAdmin,
   insertPost,
   getPostDetails,
   getAllPosts,
