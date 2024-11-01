@@ -40,13 +40,35 @@ async function insertPost(title, content, userId) {
   return rows[0].id;
 }
 
+function processPostsDetails(posts) {
+  const processedPosts = [];
+
+  posts.forEach(post => {
+    const { title, timestamp, text, username } = post;
+    const processedTimestamp = new Date(timestamp).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    processedPosts.push({ 
+      title, 
+      timestamp: processedTimestamp, 
+      text, 
+      username 
+    });
+  });
+  
+  return processedPosts;
+}
+
 async function getPostDetails(postId) {
   const { rows } = await pool.query(`
     SELECT * FROM users JOIN posts 
     ON users.id = posts.user_id
     WHERE posts.id = $1
   `, [postId]);
-  return rows[0];
+  const processedPost = processPostsDetails(rows);
+  return processedPost[0];
 }
 
 async function getAllPosts() {
@@ -54,8 +76,8 @@ async function getAllPosts() {
     SELECT * FROM users JOIN posts 
     ON users.id = posts.user_id  
   `);
-
-  return rows;
+  const processedPost = processPostsDetails(rows);
+  return processedPost;
 }
 
 module.exports = {

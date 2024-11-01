@@ -27,27 +27,11 @@ async function handleCreatePost(req, res) {
   res.redirect(`/u/${username}/p/${postId}`);
 }
 
-function processPostDetails(postDetails) {
-  const { title, timestamp, text, username } = postDetails;
-  const processedTimestamp = new Date(timestamp).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-  return { 
-    title, 
-    timestamp: processedTimestamp, 
-    text, 
-    username 
-  };
-}
-
 async function renderSinglePostPage(req, res) {
   const { username, postId } = req.params;
   const postDetails = await db.getPostDetails(postId);
-  const processedPostDetails = processPostDetails(postDetails);
   res.render('posts/singlePostPage', {
-    post: processedPostDetails,
+    post: postDetails,
   });
 }
 
