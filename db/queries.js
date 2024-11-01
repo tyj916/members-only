@@ -40,16 +40,50 @@ async function insertPost(title, content, userId) {
   return rows[0].id;
 }
 
+function processTimestamp(timestamp) {
+  const timeDifference = new Date() - new Date(timestamp);
+  const PER_MINUTE = 60 * 1000;
+  const PER_HOUR = 60 * PER_MINUTE;
+  const PER_DAY = 24 * PER_HOUR;
+  const PER_YEAR = 365 * PER_DAY;
+  
+  if (timeDifference > PER_YEAR) {
+    // return time in date DD MM YYYY format
+    return new Date(timestamp).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  }
+  
+  if (timeDifference > PER_DAY) {
+    // return time in date DD MM format
+    return new Date(timestamp).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+    });
+  }
+  
+  if (timeDifference > PER_HOUR) {
+    // return time in hours
+    return Math.round(timeDifference / (60 * 60 * 1000)) + ' h';
+  }
+  
+  if (timeDifference > PER_MINUTE) {
+    // return time in minutes
+    return Math.round(timeDifference / (60 * 1000)) + ' m';
+  }
+
+  // return time in seconds
+  return Math.round(timeDifference / (1000)) + ' s';
+}
+
 function processPostsDetails(posts) {
   const processedPosts = [];
 
   posts.forEach(post => {
     const { title, timestamp, text, username } = post;
-    const processedTimestamp = new Date(timestamp).toLocaleDateString("en-GB", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
+    const processedTimestamp = processTimestamp(timestamp);
     processedPosts.push({ 
       title, 
       timestamp: processedTimestamp, 
