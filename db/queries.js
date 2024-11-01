@@ -123,6 +123,16 @@ async function getAllPosts() {
   return processedPost;
 }
 
+async function getPostsByUserId(userId) {
+  const { rows } = await pool.query(`
+    SELECT * FROM users JOIN posts
+    ON users.id = posts.user_id
+    WHERE users.id = $1
+  `, [userId]);
+  const processedPost = processPostsDetails(rows);
+  return processedPost;
+}
+
 async function deletePost(postId) {
   await pool.query(`
     DELETE FROM posts WHERE id = $1
@@ -138,5 +148,6 @@ module.exports = {
   insertPost,
   getPostDetails,
   getAllPosts,
+  getPostsByUserId,
   deletePost,
 }

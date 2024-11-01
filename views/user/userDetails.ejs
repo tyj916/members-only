@@ -9,5 +9,13 @@
   <h1><%= user.username %></h1>
   <h2><%= user.first_name + ' ' + user.last_name %></h2>
   <h2><%= user.membership_status %></h2>
+
+  <% if (posts.length === 0) { %>
+    <p>No posts yet</p>
+  <% } else { %>
+    <% posts.forEach(post => { %>
+      <%- include('../partials/postDetails.ejs', {post: post}) %>
+    <% }); %>
+  <% } %>
 </body>
 </html>

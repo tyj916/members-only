@@ -63,8 +63,10 @@ async function renderUserDetails(req, res) {
     });
   }
 
+  const posts = await db.getPostsByUserId(user.id);
   res.render('user/userDetails', {
     user: user,
+    posts: posts,
   });
 }
 
