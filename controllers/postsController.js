@@ -1,3 +1,4 @@
+const { body, validationResult } = require('express-validator');
 const db = require('../db/queries');
 
 function renderCreatePost(req, res) {
@@ -6,7 +7,20 @@ function renderCreatePost(req, res) {
   });
 }
 
+const validatePost = [
+  body('title').trim()
+    .isLength({ min: 1, max: 255 }).withMessage('Title must be between 1 and 255 characters.'),
+];
+
 async function handleCreatePost(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('posts/createPost', {
+      user: req.user,
+      errors: errors.array(),
+    });
+  }
+
   const { title, content } = req.body;
   const { username, id: userId } = req.user;
   const postId = await db.insertPost(title, content, userId);
@@ -39,6 +53,7 @@ async function renderSinglePostPage(req, res) {
 
 module.exports = {
   renderCreatePost,
+  validatePost,
   handleCreatePost,
   renderSinglePostPage,
 }
