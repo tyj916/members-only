@@ -42,7 +42,7 @@ async function insertPost(title, content, userId) {
 
 async function getPostDetails(postId) {
   const { rows } = await pool.query(`
-    SELECT * FROM users LEFT JOIN posts 
+    SELECT * FROM users JOIN posts 
     ON users.id = posts.user_id
     WHERE posts.id = $1
   `, [postId]);
@@ -51,7 +51,7 @@ async function getPostDetails(postId) {
 
 async function getAllPosts() {
   const { rows } = await pool.query(`
-    SELECT * FROM users LEFT JOIN posts 
+    SELECT * FROM users JOIN posts 
     ON users.id = posts.user_id  
   `);
 
