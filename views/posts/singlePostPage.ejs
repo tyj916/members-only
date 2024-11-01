@@ -6,6 +6,6 @@
   <title><%= post.username %></title>
 </head>
 <body>
-  <%- include('../partials/postDetails.ejs') %>
+  <%- include('../partials/postDetails.ejs', {user: user}) %>
 </body>
 </html>

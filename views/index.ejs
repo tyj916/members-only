@@ -10,7 +10,7 @@
   <%- include('partials/createPostForm', {user: user}) %>
   
   <% posts.forEach(post => { %>
-    <%- include('./partials/postDetails', {post: post}) %>
+    <%- include('./partials/postDetails', {user: user, post: post}) %>
   <% }); %>
 </body>
 </html>

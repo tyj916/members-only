@@ -1,5 +1,14 @@
 <div class="post">
-  <p><b>@<%= post.username %></b><span><%= post.timestamp %></span></p>
+  <p>
+    <b>
+      <% if (locals.user) { %>
+        @<%= post.username %>
+      <% } else { %>
+        Anonymous
+      <% } %>
+    </b>
+    <span><%= post.timestamp %></span>
+  </p>
   <p><b><%= post.title %></b></p>
   <p><%= post.text %></p>
 </div>

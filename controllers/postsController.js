@@ -31,6 +31,7 @@ async function renderSinglePostPage(req, res) {
   const { username, postId } = req.params;
   const postDetails = await db.getPostDetails(postId);
   res.render('posts/singlePostPage', {
+    user: req.user,
     post: postDetails,
   });
 }
