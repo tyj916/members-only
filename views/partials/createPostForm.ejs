@@ -1,0 +1,13 @@
+<% if (locals.user) { %>
+  <h2><%= user.username %></h2>
+  <%- include('../partials/errorMessages.ejs') %>
+  
+  <form action="/create-post" method="POST">
+    <input type="text" name="title" placeholder="Title" required>
+    <textarea name="content" id="content" placeholder="Text..."></textarea>
+    <button type="submit">Post</button>
+  </form>
+<% } else { %>
+  <button><a href="/log-in">Log In</a></button>
+  <button><a href="/sign-up">Join Us</a></button>
+<% } %>
