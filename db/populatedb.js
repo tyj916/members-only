@@ -8,7 +8,7 @@ const SQL = `
     last_name VARCHAR (255),
     username VARCHAR (255),
     password VARCHAR (255),
-    membership_status VARCHAR (255) DEFAULT 'Basic'
+    membership_status VARCHAR (255) DEFAULT 'Non Member'
   );
 
   CREATE TABLE IF NOT EXISTS posts (
