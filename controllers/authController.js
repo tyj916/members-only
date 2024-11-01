@@ -1,7 +1,13 @@
 const { body, validationResult } = require('express-validator');
 
 function renderLogIn(req, res) {
-  res.render('user/logIn');
+  if (req.session.messages && req.session.messages.length > 1) {
+    res.render('user/logIn', {
+      errors: [{msg: 'Log in failed. ' + req.session.messages.pop()}],
+    });
+  } else {
+    res.render('user/logIn');
+  }
 }
 
 const validateLogIn = [
@@ -30,19 +36,9 @@ function handleLogOut(req, res) {
   });
 }
 
-function redirectLogIn(req, res) {
-  if (req.get('Referrer') && !req.get('Referrer').endsWith('log-in')) {
-    res.location(req.get('Referrer'));
-  } else {
-    res.location('/');
-  }
-  res.redirect(res.get('location'));
-}
-
 module.exports = {
   renderLogIn,
   validateLogIn,
   handleLogIn,
   handleLogOut,
-  redirectLogIn,
 }
