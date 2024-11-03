@@ -76,10 +76,14 @@ nav {
   gap: 24px;
 }
 
+nav svg {
+  width: 2rem;
+}
+
 nav a {
   flex: 1;
   text-align: center;
-  padding: 24px;
+  padding: 16px;
   border-radius: var(--app-border-radius);
 }
 
