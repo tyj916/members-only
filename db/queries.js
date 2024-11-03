@@ -59,7 +59,7 @@ function processTimestamp(timestamp) {
     // return time in date DD MM YYYY format
     return new Date(timestamp).toLocaleDateString("en-GB", {
       day: "numeric",
-      month: "long",
+      month: "short",
       year: "numeric",
     });
   }
@@ -68,7 +68,7 @@ function processTimestamp(timestamp) {
     // return time in date DD MM format
     return new Date(timestamp).toLocaleDateString("en-GB", {
       day: "numeric",
-      month: "long",
+      month: "short",
     });
   }
   
