@@ -121,6 +121,10 @@ nav a:hover {
   color: #aaa;
 }
 
+.user-details {
+  border-bottom: var(--app-border);
+}
+
 .post {
   display: flex;
   align-items: center;

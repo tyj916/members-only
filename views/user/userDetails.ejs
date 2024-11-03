@@ -10,9 +10,11 @@
   <%- include('../partials/header.ejs') %>
 
   <main>
-    <h1><%= username %></h1>
-    <h2><%= first_name + ' ' + last_name %></h2>
-    <h2><%= membership_status %></h2>
+    <div class="user-details">
+      <h1><%= username %></h1>
+      <h2><%= first_name + ' ' + last_name %></h2>
+      <h2><%= membership_status %></h2>
+    </div>
   
     <% if (posts.length === 0) { %>
       <p>No posts yet</p>
