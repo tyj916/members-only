@@ -49,15 +49,16 @@ async function handleSignUp(req, res) {
     }
 
     await db.createUser(firstName, lastName, username, hashedPassword);
+    
+    res.redirect(`/u/${username}`);
   });
-  res.redirect(`/u/${username}`);
 }
 
 async function renderUserDetails(req, res) {
   const user = await db.getUserByUsername(req.params.username);
 
   if (!user) {
-    res.status(404).render('util/errorPage', {
+    return res.status(404).render('util/errorPage', {
       status: 404,
       message: 'User not found',
     });
