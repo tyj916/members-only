@@ -58,11 +58,20 @@ header {
 }
 
 main {
+  flex: 1;
   background-color: white;
-  padding: 8px 24px 24px;
-  margin-bottom: 48px;
+  padding: 8px 24px;
   border: var(--app-border);
   border-radius: var(--app-border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main::after {
+  content: '';
+  display: inline-block;
+  margin: 32px;
 }
 
 nav {
@@ -90,10 +99,6 @@ nav a {
 
 nav a:hover {
   background-color: #ddd;
-}
-
-main {
-  margin: auto 0;
 }
 
 .auth-form .inputs-container {
