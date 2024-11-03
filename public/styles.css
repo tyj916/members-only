@@ -55,7 +55,7 @@ header {
 main {
   background-color: white;
   padding: 8px 24px 24px;
-  margin-bottom: 46px;
+  margin-bottom: 48px;
   border: var(--app-border);
   border-radius: var(--app-border-radius);
 }
@@ -75,12 +75,17 @@ nav {
 nav a {
   flex: 1;
   text-align: center;
-  padding: 18px;
+  padding: 24px;
   border-radius: var(--app-border-radius);
 }
 
 nav a:hover {
   background-color: #ddd;
+}
+
+.end-of-posts {
+  text-align: center;
+  color: #aaa;
 }
 
 .post {

@@ -10,9 +10,14 @@
   <%- include('partials/header.ejs') %>
 
   <main>
-    <% posts.forEach(post => { %>
-      <%- include('./partials/postDetails', {user: user, post: post}) %>
-    <% }); %>
+    <% if (posts.length === 0) { %>
+      <p>No posts yet</p>
+    <% } else { %>
+      <% posts.forEach(post => { %>
+        <%- include('./partials/postDetails.ejs', {post: post}) %>
+      <% }); %>
+      <p class="end-of-posts"> - End - </p>
+    <% } %>
   </main>
   
   <%- include('partials/nav.ejs'); %>
