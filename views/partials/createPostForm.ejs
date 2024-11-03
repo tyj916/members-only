@@ -2,10 +2,12 @@
   <h2><%= user.username %></h2>
   <%- include('../partials/errorMessages.ejs') %>
   
-  <form action="/create-post" method="POST">
+  <form action="/create-post" method="POST" class="form-create-post">
     <input type="text" name="title" placeholder="Title" required>
     <textarea name="content" id="content" placeholder="Text..."></textarea>
-    <button type="submit">Post</button>
+    <div class="buttons">
+      <button type="submit">Post</button>
+    </div>
   </form>
 <% } else { %>
   <button><a href="/log-in">Log In</a></button>

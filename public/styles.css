@@ -9,6 +9,12 @@ body {
   max-width: var(--app-width);
   margin: auto;
   background-color: #f8f8f8;
+  font-size: 1rem;
+}
+
+input,
+textarea {
+  padding: 8px;
 }
 
 a {
@@ -89,4 +95,27 @@ nav a:hover {
 .post .post-data .post-time {
   margin-left: 24px;
   color: #8a8a8a;
+}
+
+.form-create-post {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-create-post input {
+  font-size: 1rem;
+}
+
+.form-create-post textarea {
+  min-height: 200px;
+}
+
+.form-create-post .buttons {
+  align-self: flex-end;
+}
+
+.form-create-post .buttons button {
+  padding: 8px 32px;
+  font-weight: bold;
 }
