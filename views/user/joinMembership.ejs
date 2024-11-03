@@ -3,26 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
   <title>Membership</title>
 </head>
 <body>
-  <h1>Are you a member?</h1>
-  <% if (locals.user) { %>
-    <% if (user.membership_status === 'Non Member') { %>
-      <h2>Enter the secret passcode to join us:</h2>
-      <%- include('../partials/errorMessages.ejs') %>
-      <form action="/join-member" method="POST">
-        <input type="text" name="passcode" required>
-        <button type="submit">Submit</button>
-      </form>
+  <%- includes('../partials/header.ejs') %>
+
+  <main>
+    <h1>Are you a member?</h1>
+    <% if (locals.user) { %>
+      <% if (user.membership_status === 'Non Member') { %>
+        <h2>Enter the secret passcode to join us:</h2>
+        <%- include('../partials/errorMessages.ejs') %>
+        <form action="/join-member" method="POST">
+          <input type="text" name="passcode" required>
+          <button type="submit">Submit</button>
+        </form>
+      <% } else { %>
+        <h2>You are currently a member of the club!</h2>
+        <p>Check the membership status <a href="/u/<%= user.username %>">at your profile</a></p>
+        <a href="/">Back to home</a>
+      <% } %>
     <% } else { %>
-      <h2>You are currently a member of the club!</h2>
-      <p>Check the membership status <a href="/u/<%= user.username %>">at your profile</a></p>
-      <a href="/">Back to home</a>
+      <h2>Log in and join us:</h2>
+       <a href="/log-in">Log In</a>
     <% } %>
-  <% } else { %>
-    <h2>Log in and join us:</h2>
-     <a href="/log-in">Log In</a>
-  <% } %>
+  </main>
+
+  <%- include('../partials/nav.ejs') %>
 </body>
 </html>

@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
   <title><%= username %></title>
 </head>
 <body>
   <%- include('../partials/header.ejs') %>
-  <h1><%= username %></h1>
-  <h2><%= first_name + ' ' + last_name %></h2>
-  <h2><%= membership_status %></h2>
 
-  <% if (posts.length === 0) { %>
-    <p>No posts yet</p>
-  <% } else { %>
-    <% posts.forEach(post => { %>
-      <%- include('../partials/postDetails.ejs', {post: post}) %>
-    <% }); %>
-  <% } %>
+  <main>
+    <h1><%= username %></h1>
+    <h2><%= first_name + ' ' + last_name %></h2>
+    <h2><%= membership_status %></h2>
+  
+    <% if (posts.length === 0) { %>
+      <p>No posts yet</p>
+    <% } else { %>
+      <% posts.forEach(post => { %>
+        <%- include('../partials/postDetails.ejs', {post: post}) %>
+      <% }); %>
+    <% } %>
+  </main>
 
   <%- include('../partials/nav.ejs'); %>
 </body>

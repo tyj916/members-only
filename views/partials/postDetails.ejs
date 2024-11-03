@@ -1,14 +1,18 @@
 <div class="post">
-  <p>
-    <% if (locals.user) { %>
-      <b><%= post.username %></b><span><%= post.timestamp %></span>
-      <form action="/p/<%= post.id %>/delete" method="POST">
-        <button type="submit" onclick="return confirm(`Are you sure you want to delete this post (<%= post.id %>)?`)">Delete</button>
-      </form>
-    <% } else { %>
-      <b>Anonymous</b>
-    <% } %>
-  </p>
-  <p><b><%= post.title %></b></p>
-  <p><%= post.text %></p>
+  <div class="container">
+    <p class="post-title"><b><%= post.title %></b></p>
+    <p class="post-content"><%= post.text %></p>
+    <p class="post-data">
+      By: 
+      <% if (locals.user) { %>
+        <b><a href="/u/<%= post.username %>"><%= post.username %></a></b>
+        <span class="post-time"><%= post.timestamp %></span>
+      <% } else { %>
+        <b>Anonymous</b>
+      <% } %>
+    </p>
+  </div>
+  <form action="/p/<%= post.id %>/delete" class="form-delete-post">
+    <button type="submit" onclick="return confirm(`Are you sure you want to delete this post (<%= post.id %>)?`)">Delete</button>
+  </form>
 </div>

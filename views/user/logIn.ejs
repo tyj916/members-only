@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
   <title>Log In</title>
 </head>
 <body>
-  <h1>Connect to the club.</h1>
-  <form action="log-in" method="POST">
-    <%- include('../partials/errorMessages.ejs') %>
-    <input type="text" name="username" placeholder="username" required>
-    <input type="password" name="password" placeholder="password" required>
-    <button type="submit">Log In</button>
-  </form>
-  <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
+  <main>
+    <h1>Connect to the club.</h1>
+    <form action="log-in" method="POST">
+      <%- include('../partials/errorMessages.ejs') %>
+      <input type="text" name="username" placeholder="username" required>
+      <input type="password" name="password" placeholder="password" required>
+      <button type="submit">Log In</button>
+    </form>
+    <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
+  </main>
 </body>
 </html>

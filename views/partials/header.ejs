@@ -1,6 +1,11 @@
 <header>
   <h1>Members Only</h1>
   <% if (locals.user) { %>
-    <a href="/log-out">Log out</a>
+    <a href="/log-out" class="btn-link">Log out</a>
+  <% } else { %>
+    <div>
+      <a href="/log-in" class="btn-link">Log In</a>
+      <a href="/sign-up" class="btn-link">Join Us</a>
+    </div>
   <% } %>
 </header>

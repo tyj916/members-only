@@ -8,12 +8,13 @@
 </head>
 <body>
   <%- include('partials/header.ejs') %>
-  <%- include('partials/createPostForm', {user: user}) %>
-  
-  <% posts.forEach(post => { %>
-    <%- include('./partials/postDetails', {user: user, post: post}) %>
-  <% }); %>
 
+  <main>
+    <% posts.forEach(post => { %>
+      <%- include('./partials/postDetails', {user: user, post: post}) %>
+    <% }); %>
+  </main>
+  
   <%- include('partials/nav.ejs'); %>
 </body>
 </html>

@@ -1,3 +1,92 @@
+:root {
+  --app-width: 640px;
+  --app-border: 1px solid #ddd;
+  --app-border-radius: 16px;
+}
+
 body {
-  color: red;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: var(--app-width);
+  margin: auto;
+  background-color: #f8f8f8;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button, 
+.btn-link {
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: 4px 20px;
+}
+
+button:hover, 
+.btn-link:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-color: black;
+}
+
+.btn-link {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+main {
+  background-color: white;
+  padding: 16px 24px 24px;
+  margin-bottom: 46px;
+  border: var(--app-border);
+  border-radius: var(--app-border-radius);
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  max-width: var(--app-width);
+  border: var(--app-border);
+  background: white;
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  padding: 18px;
+  border-radius: var(--app-border-radius);
+}
+
+nav a:hover {
+  background-color: #ddd;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+}
+
+.post .container {
+  flex: 1;
+}
+
+.post .post-data .post-time {
+  margin-left: 24px;
+  color: #8a8a8a;
 }
