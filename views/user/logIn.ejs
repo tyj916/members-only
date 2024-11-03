@@ -10,11 +10,13 @@
   <main>
     <a href="/" class="back-link">&lt; Home</a>
     <h1>Connect to the club.</h1>
-    <form action="log-in" method="POST">
+    <form action="log-in" method="POST" class="auth-form">
       <%- include('../partials/errorMessages.ejs') %>
-      <input type="text" name="username" placeholder="username" required>
-      <input type="password" name="password" placeholder="password" required>
-      <button type="submit">Log In</button>
+      <div class="inputs-container">
+        <input type="text" name="username" placeholder="username" required>
+        <input type="password" name="password" placeholder="password" required>
+        <button type="submit">Log In</button>
+      </div>
     </form>
     <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
   </main>
