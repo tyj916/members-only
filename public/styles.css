@@ -10,6 +10,10 @@ body {
   margin: auto;
   background-color: #f8f8f8;
   font-size: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 input,
@@ -81,6 +85,11 @@ nav a {
 
 nav a:hover {
   background-color: #ddd;
+}
+
+.back-link {
+  display: block;
+  margin: 24px 0;
 }
 
 .end-of-posts {
