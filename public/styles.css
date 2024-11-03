@@ -139,11 +139,22 @@ nav a:hover {
   border-bottom: var(--app-border);
 }
 
+.user-details .membership-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.posts {
+  margin-bottom: auto;
+}
+
 .post {
   display: flex;
   align-items: center;
   border-bottom: var(--app-border);
   padding: 16px 0;
+  margin-bottom: auto;
 }
 
 .post:last-child {
