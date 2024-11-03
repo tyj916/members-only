@@ -12,5 +12,7 @@
   <% posts.forEach(post => { %>
     <%- include('./partials/postDetails', {user: user, post: post}) %>
   <% }); %>
+
+  <%- include('partials/nav.ejs'); %>
 </body>
 </html>
