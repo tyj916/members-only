@@ -14,19 +14,23 @@
       <h1><%= username %></h1>
       <h2><%= first_name + ' ' + last_name %></h2>
       <div class="membership-status">
-        <h2><%= membership_status %></h2>
-        <a href="/join-member" class="btn-link">Change Membership</a>
+        <h3><%= membership_status %></h3>
+        <% if (locals.user && user.username === username) { %>
+          <a href="/join-member" class="btn-link">Change Membership</a>
+        <% } %>
       </div>
     </div>
   
-    <% if (posts.length === 0) { %>
-      <p>No posts yet</p>
-    <% } else { %>
-      <% posts.forEach(post => { %>
-        <%- include('../partials/postDetails.ejs', {post: post}) %>
-      <% }); %>
-      <p class="end-of-posts"> - End - </p>
-    <% } %>
+    <div class="posts">
+      <% if (posts.length === 0) { %>
+        <p>No posts yet</p>
+      <% } else { %>
+        <% posts.forEach(post => { %>
+          <%- include('../partials/postDetails.ejs', {post: post}) %>
+        <% }); %>
+        <p class="end-of-posts"> - End - </p>
+      <% } %>
+    </div>
   </main>
 
   <%- include('../partials/nav.ejs'); %>
