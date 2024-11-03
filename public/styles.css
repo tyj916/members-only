@@ -54,7 +54,7 @@ header {
 
 main {
   background-color: white;
-  padding: 16px 24px 24px;
+  padding: 8px 24px 24px;
   margin-bottom: 46px;
   border: var(--app-border);
   border-radius: var(--app-border-radius);
@@ -86,10 +86,20 @@ nav a:hover {
 .post {
   display: flex;
   align-items: center;
+  border-bottom: var(--app-border);
+  padding: 16px 0;
+}
+
+.post:last-child {
+  border-bottom: none;
 }
 
 .post .container {
   flex: 1;
+}
+
+.post .post-title {
+  font-size: 1.1rem;
 }
 
 .post .post-data .post-time {
