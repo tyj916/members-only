@@ -5,6 +5,7 @@
 }
 
 body {
+  box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: var(--app-width);
   margin: auto;
@@ -89,6 +90,10 @@ nav a {
 
 nav a:hover {
   background-color: #ddd;
+}
+
+main {
+  margin: auto 0;
 }
 
 .auth-form .inputs-container {
