@@ -36,6 +36,17 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+authRouter.get('/sign-up', authController.renderSignUp);
+authRouter.post(
+  '/sign-up', 
+  authController.validateSignUp, 
+  authController.handleSignUp,
+  passport.authenticate('local', {
+    failureRedirect: '/log-in',
+    failureMessage: true,
+    successRedirect: '/',
+  }),
+);
 authRouter.get('/log-in', authController.renderLogIn);
 authRouter.post(
   '/log-in', 
