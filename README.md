@@ -4,3 +4,15 @@ An exclusive clubhouse where members can write anonymous posts. Inside the clubh
 
 Feel free to sign up as club member and play around!
 Club member secret phrase: clubMember
+
+Live @ https://members-only-rmo2.onrender.com
+
+More features that can be expected:
+- Comments section for each post
+- Users profile picture
+- Edit post
+- Private message for members
+- Posts viewed count
+- Sorted posts
+- Better design
+- etc...
