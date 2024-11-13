@@ -117,7 +117,8 @@ async function getPostDetails(postId) {
 async function getAllPosts() {
   const { rows } = await pool.query(`
     SELECT * FROM users JOIN posts 
-    ON users.id = posts.user_id  
+    ON users.id = posts.user_id
+    ORDER BY posts.id DESC
   `);
   const processedPost = processPostsDetails(rows);
   return processedPost;
